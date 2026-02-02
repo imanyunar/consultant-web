@@ -33,6 +33,13 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ], [
+            'name.required' => 'Nama lengkap harus diisi',
+            'email.required' => 'Email harus diisi',
+            'email.email' => 'Format email tidak valid',
+            'email.unique' => 'Email sudah terdaftar',
+            'password.required' => 'Password harus diisi',
+            'password.confirmed' => 'Konfirmasi password tidak cocok',
         ]);
 
         $user = User::create([
@@ -45,6 +52,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('dashboard', absolute: false))->with('success', 'Selamat datang! Akun Anda berhasil dibuat.');
     }
 }

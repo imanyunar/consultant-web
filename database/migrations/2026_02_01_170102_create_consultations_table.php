@@ -10,17 +10,18 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-{
-    Schema::create('consultations', function (Blueprint $table) {
-        $table->id();
-        $table->string('nama_umkm');
-        $table->string('bidang_usaha');
-        $table->string('nomor_wa');
-        $table->text('keluhan_utama');
-        $table->enum('status', ['pending', 'diproses', 'selesai'])->default('pending');
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('consultations', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->string('nama_umkm');
+            $table->string('bidang_usaha');
+            $table->string('nomor_wa');
+            $table->text('keluhan_utama');
+            $table->enum('status', ['pending', 'diproses', 'selesai'])->default('pending');
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.

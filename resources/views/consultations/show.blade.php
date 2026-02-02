@@ -43,8 +43,10 @@
 
                 <!-- Informasi Umkm -->
                 <div class="mb-8">
-                    <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path d="M5.5 12a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.3A4.5 4.5 0 1113.5 12H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V12H5.5z"></path></svg>
+                    <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path d="M5.5 12a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.3A4.5 4.5 0 1113.5 12H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V12H5.5z"></path></svg>
+                        </div>
                         Informasi Bisnis
                     </h4>
                     
@@ -73,8 +75,10 @@
 
                 <!-- Topik Konsultasi -->
                 <div class="mb-8">
-                    <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2z" clip-rule="evenodd"/></path></svg>
+                    <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2z" clip-rule="evenodd"/></path></svg>
+                        </div>
                         Topik Konsultasi
                     </h4>
                     
@@ -85,8 +89,10 @@
 
                 <!-- Status Timeline -->
                 <div class="mb-8">
-                    <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></path></svg>
+                    <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></path></svg>
+                        </div>
                         Status Konsultasi
                     </h4>
 

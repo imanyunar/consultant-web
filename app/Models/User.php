@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Relationship: User dapat memiliki banyak konsultasi
+     */
+    public function consultations()
+    {
+        return $this->hasMany(Consultation::class);
+    }
 }
