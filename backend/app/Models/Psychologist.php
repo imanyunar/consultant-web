@@ -14,4 +14,15 @@ class Psychologist extends Model
         'bio',
         'consultation_fee',
     ];
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
+
 }

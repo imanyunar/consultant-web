@@ -16,11 +16,11 @@ class CreateController extends Controller
     public function store(Request $request, string $model)
     {
        return match ($model){
-            'psychologists' => $this->createPsichologist($request),
-            'patients' => $this->createPatient($request),
-            'appointments' => $this->createAppointment($request),
-            'schedules' => $this->createSchedule($request),
-            'payments' => $this->createPayment($request),
+            'psychologists' => $this->psychologistStore($request),
+            'patients' => $this->patientStore($request),
+            'appointments' => $this->appointmentStore($request),
+            'schedules' => $this->scheduleStore($request),
+            'payments' => $this->paymentStore($request),
             default => response()->json(['message' => 'Model not found'], 404), 
 
        };
@@ -55,7 +55,8 @@ class CreateController extends Controller
             'phone' => 'required|string|max:20',
             'birth_date' => 'required|date',
         ]);
-
+        
+      
         return response()->json([
             'message' => 'Patient created successfully',
             'data' => Patient::create($request->all()),
@@ -94,7 +95,7 @@ class CreateController extends Controller
         ]);
     }
 
-    private function login(Request $request)
+    publi function login(Request $request)
     {
         $request->validate([
             'email' => 'required|string|email',
@@ -114,6 +115,30 @@ class CreateController extends Controller
             'access_token' => $token,
             'token_type' => 'Bearer',
         ]);
+    }
+        public function register(Request $request){ 
+        
+            $data = $request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+ 
+        $user  = User::create([
+            'name'     => $data['name'],
+            'email'    => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+ 
+        $token = $user->createToken('auth_token')->plainTextToken;
+ 
+        return response()->json([
+            'message'      => 'Register successful',
+            'access_token' => $token,
+            'token_type'   => 'Bearer',
+            'user'         => $user,
+        ], 201);
+    
     }
 
 }
