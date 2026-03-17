@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Psychologist extends Model
 {
     protected $fillable = [
+        'user_id',
         'name',
         'email',
         'phone',
@@ -14,6 +15,11 @@ class Psychologist extends Model
         'bio',
         'consultation_fee',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function appointments()
     {

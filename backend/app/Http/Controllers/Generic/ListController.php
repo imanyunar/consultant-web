@@ -60,7 +60,26 @@ class ListController extends Controller
 
     private function patientIndex(Request $request)
     {
+        $user = $request->user();
         $query = Patient::query();
+
+        // Jika role adalah patient, hanya tampilkan data milik sendiri melalui user_id
+        if ($user && $user->role === 'patient') {
+            $query->where('user_id', $user->id);
+        }
+
+        // Jika role adalah psychologist, hanya tampilkan pasien yang memiliki appointment dengan mereka
+        if ($user && $user->role === 'psychologist') {
+            $psychologist = $user->psychologist;
+            if ($psychologist) {
+                $query->whereHas('appointments', function ($q) use ($psychologist) {
+                    $q->where('psychologist_id', $psychologist->id);
+                });
+            } else {
+                // Jika tidak ada profil psikolog, jangan tampilkan data
+                $query->whereRaw('1 = 0');
+            }
+        }
 
         if ($request->filled('search')) {
             $search = $request->search;
@@ -79,7 +98,25 @@ class ListController extends Controller
 
     private function appointmentIndex(Request $request)
     {
+        $user = $request->user();
         $query = Appointment::with(['patient', 'psychologist']);
+
+        // Scoping berdasarkan role
+        if ($user && $user->role === 'patient') {
+            $patient = $user->patient;
+            if ($patient) {
+                $query->where('patient_id', $patient->id);
+            } else {
+                $query->whereRaw('1 = 0');
+            }
+        } elseif ($user && $user->role === 'psychologist') {
+            $psychologist = $user->psychologist;
+            if ($psychologist) {
+                $query->where('psychologist_id', $psychologist->id);
+            } else {
+                $query->whereRaw('1 = 0');
+            }
+        }
 
         if ($request->filled('status')) {
             $query->where('status', $request->status);
