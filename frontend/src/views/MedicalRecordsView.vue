@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useApi } from '@/composables/useApi'
+import { useList } from '@/composables/useList'
 
-const { data: records, loading, error, fetchAll } = useApi('payments') // Using payments for now as medical records proxy
+const { data: records, loading, error, fetchList } = useList('payments') // Using payments for now as medical records proxy
 
 onMounted(() => {
-  fetchAll()
+  fetchList()
 })
 
 const formatDate = (dateStr: string) => {
@@ -40,7 +40,7 @@ const formatDate = (dateStr: string) => {
 
       <div v-else-if="error" class="error-state">
         <p>{{ error }}</p>
-        <button @click="fetchAll()" class="btn-small">Coba Lagi</button>
+        <button @click="fetchList()" class="btn-small">Coba Lagi</button>
       </div>
 
       <div v-else-if="records.length > 0" class="table-container">

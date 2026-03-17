@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useApi } from '@/composables/useApi'
+import { useList } from '@/composables/useList'
 
-const { data: patients, loading, error, fetchAll } = useApi('patients')
+const { data: patients, loading, error, fetchList } = useList('patients')
 
 onMounted(() => {
-  fetchAll()
+  fetchList()
 })
 </script>
 
@@ -32,7 +32,7 @@ onMounted(() => {
 
       <div v-else-if="error" class="error-state">
         <p>{{ error }}</p>
-        <button @click="fetchAll()" class="btn-small">Coba Lagi</button>
+        <button @click="fetchList()" class="btn-small">Coba Lagi</button>
       </div>
 
       <div v-else-if="patients.length > 0" class="table-container">
